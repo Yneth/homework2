@@ -5,47 +5,37 @@ import java.util.Collections;
 import java.util.List;
 
 public class Payment {
-    private Cart cart;
-    private List<String> products;
+    private List<Product> products;
 
     public Payment() {
-        this.cart = new Cart();
+        this(new ArrayList<>());
+    }
+
+    public Payment(List<Product> products) {
         this.products = Collections.unmodifiableList(new ArrayList<>());
     }
 
-    public Cart getCart() {
-        return cart;
+    public void addProduct(Product product) {
+        products.add(product);
     }
 
-    public List<String> getProducts() {
-        return products;
+    public void removeProduct(Product product) {
+        products.remove(product);
     }
 
-    public class Cart {
-        private boolean confirmed = false;
-        private List<String> chosenProducts = new ArrayList<>();
+    public List<Product> getProducts() {
+        return Collections.unmodifiableList(products);
+    }
 
-        public void addProduct(String product) {
-            if (confirmed)
-                return;
-            chosenProducts.add(product);
+    public class Product {
+        private final String name;
+
+        public Product(String name) {
+            this.name = name;
         }
 
-        public void removeProduct(String product) {
-            if (confirmed)
-                return;
-            chosenProducts.remove(product);
-        }
-
-        public void discard() {
-            if (confirmed)
-                return;
-            chosenProducts.clear();
-        }
-
-        public void confirm() {
-            confirmed = true;
-            products = Collections.unmodifiableList(chosenProducts);
+        public String getName() {
+            return name;
         }
     }
 }
