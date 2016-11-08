@@ -10,7 +10,7 @@ public class Text {
     private String header;
     private final List<Sentence> sentences;
 
-    public Text(String header, List<Sentence> sentences) {
+    private Text(String header, List<Sentence> sentences) {
         Objects.requireNonNull(header, "Header cannot be null");
         Objects.requireNonNull(sentences, "Sentences cannot be null");
 
