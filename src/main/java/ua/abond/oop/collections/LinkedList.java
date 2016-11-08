@@ -6,13 +6,13 @@ import java.util.Objects;
 
 public class LinkedList<T> implements List<T> {
     private int size;
-    private Node<T> head;
-    private Node<T> tail;
+    private Node<T> first;
+    private Node<T> last;
 
     public LinkedList() {
         size = 0;
-        head = null;
-        tail = null;
+        first = null;
+        last = null;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class LinkedList<T> implements List<T> {
     @Override
     public void remove(T value) {
         Objects.requireNonNull(value);
-        Node<T> node = head;
+        Node<T> node = first;
         while (node != null) {
             if (node.value.equals(value)) {
                 unlink(node);
@@ -42,18 +42,18 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T getFirst() {
-        if (head == null) {
+        if (first == null) {
             throw new NoSuchElementException();
         }
-        return head.value;
+        return first.value;
     }
 
     @Override
     public T getLast() {
-        if (tail == null) {
+        if (last == null) {
             throw new NoSuchElementException();
         }
-        return tail.value;
+        return last.value;
     }
 
     @Override
@@ -65,12 +65,12 @@ public class LinkedList<T> implements List<T> {
     public void addFirst(T value) {
         Node<T> node = new Node<>(value);
         if (isEmpty()) {
-            head = node;
-            tail = head;
+            first = node;
+            last = first;
         } else {
-            head.prev = node;
-            node.next = head;
-            head = node;
+            first.prev = node;
+            node.next = first;
+            first = node;
         }
         size++;
     }
@@ -79,13 +79,13 @@ public class LinkedList<T> implements List<T> {
     public void addLast(T value) {
         Node<T> node = new Node<>(value);
         if (isEmpty()) {
-            head = node;
-            tail = head;
+            first = node;
+            last = first;
         }
         else {
-            tail.next = node;
-            node.prev = tail;
-            tail = node;
+            last.next = node;
+            node.prev = last;
+            last = node;
         }
         size++;
     }
@@ -115,14 +115,14 @@ public class LinkedList<T> implements List<T> {
         Node<T> prev = node.prev;
         Node<T> next = node.next;
         if (prev == null) {
-            head = next;
+            first = next;
         } else {
             prev.next = next;
             node.prev = null;
         }
 
         if (next == null) {
-            tail = prev;
+            last = prev;
         } else {
             next.prev = prev;
             node.next = null;
@@ -134,11 +134,11 @@ public class LinkedList<T> implements List<T> {
     private Node<T> node(int index) {
         Node<T> node;
         if (index < (size >> 1)) {
-            node = head;
+            node = first;
             for (int i = 0; i < index; i++)
                 node = node.next;
         } else {
-            node = tail;
+            node = last;
             for (int i = size - 1; i > index; i--)
                 node = node.prev;
         }
@@ -165,7 +165,7 @@ public class LinkedList<T> implements List<T> {
         private Node<T> node;
 
         LinkedListIterator() {
-            this.node = head;
+            this.node = first;
         }
 
         @Override

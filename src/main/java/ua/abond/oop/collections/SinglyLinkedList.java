@@ -6,12 +6,12 @@ import java.util.Objects;
 
 public class SinglyLinkedList<T> implements List<T> {
     private int size;
-    private Node<T> head;
+    private Node<T> first;
     private Node<T> last;
 
     public SinglyLinkedList() {
         size = 0;
-        head = null;
+        first = null;
         last = null;
     }
 
@@ -24,14 +24,14 @@ public class SinglyLinkedList<T> implements List<T> {
     @Override
     public void remove(T value) {
         Objects.requireNonNull(value);
-        if (head.value.equals(value)) {
-            head = head.next;
+        if (first.value.equals(value)) {
+            first = first.next;
         } else {
             unlinkNext(findPrevious(value));
         }
         size--;
         if (isEmpty()) {
-            head = last = null;
+            first = last = null;
         }
     }
 
@@ -39,22 +39,22 @@ public class SinglyLinkedList<T> implements List<T> {
     public void remove(int index) {
         checkIndex(index);
         if (index == 0) {
-            head = head.next;
+            first = first.next;
         } else {
             unlinkNext(findPrevious(index));
         }
         size--;
         if (isEmpty()) {
-            head = last = null;
+            first = last = null;
         }
     }
 
     @Override
     public T getFirst() {
-        if (head == null) {
+        if (first == null) {
             throw new NoSuchElementException();
         }
-        return head.value;
+        return first.value;
     }
 
     @Override
@@ -74,11 +74,11 @@ public class SinglyLinkedList<T> implements List<T> {
     public void addFirst(T value) {
         Node<T> node = new Node<>(value);
         if (isEmpty()) {
-            head = node;
-            last = head;
+            first = node;
+            last = first;
         } else {
-            node.next = head;
-            head = node;
+            node.next = first;
+            first = node;
         }
         size++;
     }
@@ -88,7 +88,7 @@ public class SinglyLinkedList<T> implements List<T> {
         Node<T> node = new Node<>(value);
         if (isEmpty()) {
             last = node;
-            head = last;
+            first = last;
         } else {
             last.next = node;
             last = node;
@@ -134,10 +134,10 @@ public class SinglyLinkedList<T> implements List<T> {
     }
 
     private Node<T> findPrevious(T value) {
-        if (head == null) {
+        if (first == null) {
             return null;
         }
-        Node<T> result = head;
+        Node<T> result = first;
         while (result.next != null) {
             if (result.next.value.equals(value)) {
                 return result;
@@ -147,7 +147,7 @@ public class SinglyLinkedList<T> implements List<T> {
     }
 
     private Node<T> node(int index) {
-        Node<T> result = head;
+        Node<T> result = first;
         for (int i = 0; i < index; i++) {
             result = result.next;
         }
@@ -164,7 +164,7 @@ public class SinglyLinkedList<T> implements List<T> {
         private Node<T> node;
 
         SinglyLinkedListIterator() {
-            this.node = head;
+            this.node = first;
         }
 
         @Override
