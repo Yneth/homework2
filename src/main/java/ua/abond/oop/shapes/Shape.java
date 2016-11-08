@@ -2,11 +2,10 @@ package ua.abond.oop.shapes;
 
 import java.util.Objects;
 
-@FunctionalInterface
-public interface Shape {
-    double getArea();
+public abstract class Shape {
+    public abstract double getArea();
 
-    default double sumOfAreas(Shape that) {
+    public double sumOfAreas(Shape that) {
         Objects.requireNonNull(that);
         return this.getArea() + that.getArea();
     }

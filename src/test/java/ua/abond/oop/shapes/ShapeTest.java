@@ -26,5 +26,4 @@ public class ShapeTest {
     private double sum(Shape s0, Shape s1) {
         return s0.sumOfAreas(s1);
     }
-
 }

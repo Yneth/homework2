@@ -2,7 +2,7 @@ package ua.abond.oop.shapes;
 
 import ua.abond.oop.shapes.util.Doubles;
 
-public class Trapezium implements Shape {
+public class Trapezium extends Shape {
     private final double height;
     private final double bottomBase;
     private final double topBase;

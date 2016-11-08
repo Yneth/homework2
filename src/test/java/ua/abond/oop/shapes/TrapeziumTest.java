@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class TrapeziumTest {
 
-    private static final double DELTA = 0.0001;
+    private static final double DELTA = 0.01;
 
     @Test(expected = IllegalArgumentException.class)
     public void testNegativeInfinityArg() {
@@ -85,10 +85,17 @@ public class TrapeziumTest {
 
     @Test
     public void getArea() throws Exception {
-
+        assertEquals(1.0, getArea(1.0, 1.0, 1.0), DELTA);
+        assertEquals(5.5, getArea(1.0, 1.0, 10.0), DELTA);
+        assertEquals(10.0, getArea(1.0, 10.0, 10.0), DELTA);
+        assertEquals(32454.0, getArea(2.0, 322.0, 32132.0), DELTA);
+        assertEquals(32454.12, getArea(2.0, 322.12312, 32132.0), DELTA);
+        assertEquals(32454.33, getArea(2.0, 322.12312, 32132.2112), DELTA);
+        assertEquals(64354.33, getArea(2.0, 32222.12312, 32132.2112), DELTA);
     }
 
     private static double getArea(double height, double botBase, double topBase) {
         return new Trapezium(height, botBase, topBase).getArea();
     }
 }
+

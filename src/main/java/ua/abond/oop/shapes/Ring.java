@@ -2,7 +2,7 @@ package ua.abond.oop.shapes;
 
 import ua.abond.oop.shapes.util.Doubles;
 
-public class Ring implements Shape {
+public class Ring extends Shape {
     private final double radius;
 
     public Ring(double radius) {

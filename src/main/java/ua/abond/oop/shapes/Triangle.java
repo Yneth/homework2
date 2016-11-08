@@ -2,7 +2,7 @@ package ua.abond.oop.shapes;
 
 import ua.abond.oop.shapes.util.Doubles;
 
-public class Triangle implements Shape {
+public class Triangle extends Shape {
     private final double base;
     private final double height;
 

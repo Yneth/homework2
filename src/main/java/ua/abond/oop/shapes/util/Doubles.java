@@ -2,7 +2,6 @@ package ua.abond.oop.shapes.util;
 
 public final class Doubles {
     private Doubles() {
-
     }
 
     public static void requireFinitePositive(double val, String message) {

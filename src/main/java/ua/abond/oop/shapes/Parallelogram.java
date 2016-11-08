@@ -2,7 +2,7 @@ package ua.abond.oop.shapes;
 
 import ua.abond.oop.shapes.util.Doubles;
 
-public class Parallelogram implements Shape {
+public class Parallelogram extends Shape {
     private final double base;
     private final double height;
 
