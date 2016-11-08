@@ -4,12 +4,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class Planet extends GeographicObject {
+public class Planet extends GeographicalObject {
     private List<Ocean> oceans;
     private List<Island> islands;
     private List<Continent> continents;
 
-    public Planet(String name, List<Ocean> oceans, List<Island> islands, List<Continent> continents) {
+    private Planet(String name, List<Ocean> oceans, List<Island> islands, List<Continent> continents) {
         super(name);
         Objects.requireNonNull(oceans);
         Objects.requireNonNull(islands);

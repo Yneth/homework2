@@ -1,7 +1,6 @@
 package ua.abond.oop.planet;
 
 import org.junit.Test;
-import sun.java2d.loops.GeneralRenderer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -61,7 +60,7 @@ public class PlanetTest extends GeographicObjectTest {
     }
 
     @Override
-    protected GeographicObject create(String name) {
+    protected GeographicalObject create(String name) {
         return new Planet(name,
                 new LinkedList<>(),
                 new LinkedList<>(),

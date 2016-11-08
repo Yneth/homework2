@@ -12,7 +12,7 @@ public abstract class GeographicObjectTest {
     @Test
     public void printName() throws Exception {
         String name = "Test Name";
-        GeographicObject obj = create(name);
+        GeographicalObject obj = create(name);
 
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -27,15 +27,15 @@ public abstract class GeographicObjectTest {
     @Test
     public void getName() throws Exception {
         String name = "Test Name";
-        GeographicObject obj = create(name);
+        GeographicalObject obj = create(name);
 
         assertEquals(name, obj.getName());
     }
 
     @Test(expected = NullPointerException.class)
     public void createWithNullArg() throws Exception {
-        GeographicObject obj = create(null);
+        GeographicalObject obj = create(null);
     }
 
-    protected abstract GeographicObject create(String name);
+    protected abstract GeographicalObject create(String name);
 }
